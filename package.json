@@ -1,0 +1,19 @@
+{
+  "name": "findgas-graphql",
+  "version": "1.0.0",
+  "description": "GraphQL API to find nearby gas stations",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acaua/findgas-graphql.git"
+  },
+  "author": "Acauã Sperl de Faria",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/acaua/findgas-graphql/issues"
+  },
+  "homepage": "https://github.com/acaua/findgas-graphql#readme"
+}
