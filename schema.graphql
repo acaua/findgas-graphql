@@ -1,3 +1,26 @@
+type GasStationsData {
+  location: Location
+  gasStations: [GasStation!]!
+}
+
+type Location {
+  lat: String!
+  lng: String!
+  number: String
+  street: String
+  district: String
+  city: String
+  state: String
+  zipCode: String
+}
+
+type GasStation {
+  lat: String!
+  lng: String!
+  name: String
+  address: String
+}
+
 type Query {
-  hello(name: String): String!
+  gasStations(lat: String, lng: String): GasStationsData!
 }
