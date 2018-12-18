@@ -1,53 +1,29 @@
+const axios = require("axios");
+
+const { parseAddress, parseGasStations } = require("./mapUtils");
+
 const resolvers = {
   Query: {
     gasStations: (_, { lat, lng }) => {
-      return {};
+      return { lat, lng };
     }
   },
   GasStationsData: {
-    location: (_, { lat, lng }) => {
-      return JSON.parse(`
-      {
-        "lat": -23.5655625,
-        "lng": -46.6472389,
-        "number": "1967",
-        "street": "Avenida Brigadeiro Luís Antônio",
-        "district": "Bela Vista",
-        "city": "São Paulo",
-        "state": "SP",
-        "zipCode": "04002-010"
-      }
-      `);
+    location: ({ lat, lng }) => {
+      return axios
+        .get(
+          `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&sensor=false&key=AIzaSyA6TfU84r6wT2gu1NYAOCN7JkO342K21So`
+        )
+        .then(res => {
+          return parseAddress(res.data.results[0]);
+        });
     },
-    gasStations: (_, { lat, lng }) => {
-      return JSON.parse(`
-      [
-        {
-          "lat": -23.5597654,
-          "lng": -46.57735239999999,
-          "name": "Shell (Rede Duque)",
-          "address": "Avenida Salim Farah Maluf, 3400 - Vila Bertioga, São Paulo"
-        },
-        {
-          "lat": -23.55331,
-          "lng": -46.6584,
-          "name": "AUTO POSTO BELA CINTRA LTDA",
-          "address": "Rua Fernando de Albuquerque, 216 - Consolação, São Paulo"
-        },
-        {
-          "lat": -23.5300399,
-          "lng": -46.6778527,
-          "name": "Posto Ipiranga",
-          "address": "Rua Cayowaá, 45 - Perdizes, São Paulo"
-        },
-        {
-          "lat": -23.6031717,
-          "lng": -46.6258529,
-          "nome": "Posto Shell",
-          "address": "Avenida Doutor Ricardo Jafet, 3274 - Saúde, São Paulo"
-        }
-      ]
-      `);
+    gasStations: ({ lat, lng }) => {
+      return axios
+        .get(
+          `https://maps.googleapis.com/maps/api/place/search/json?location=${lat},${lng}&radius=10000&type=gas_station&key=AIzaSyA6TfU84r6wT2gu1NYAOCN7JkO342K21So`
+        )
+        .then(res => parseGasStations(res.data.results));
     }
   }
 };
