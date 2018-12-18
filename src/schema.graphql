@@ -22,5 +22,5 @@ type GasStation {
 }
 
 type Query {
-  gasStations(lat: String, lng: String): GasStationsData!
+  gasStations(lat: String!, lng: String!): GasStationsData!
 }
