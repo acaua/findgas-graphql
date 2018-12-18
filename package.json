@@ -2,9 +2,10 @@
   "name": "findgas-graphql",
   "version": "1.0.0",
   "description": "GraphQL API to find nearby gas stations",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "server": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,8 @@
   "homepage": "https://github.com/acaua/findgas-graphql#readme",
   "dependencies": {
     "graphql-yoga": "^1.16.7"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
   }
 }
