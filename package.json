@@ -2,10 +2,10 @@
   "name": "findgas-graphql",
   "version": "1.0.0",
   "description": "GraphQL API to find nearby gas stations",
-  "main": "server.js",
+  "main": "src/server.js",
   "scripts": {
-    "start": "node server.js",
-    "server": "nodemon server.js"
+    "start": "node src/server.js",
+    "server": "nodemon src/server.js"
   },
   "repository": {
     "type": "git",
