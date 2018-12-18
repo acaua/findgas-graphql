@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/acaua/findgas-graphql/issues"
   },
-  "homepage": "https://github.com/acaua/findgas-graphql#readme"
+  "homepage": "https://github.com/acaua/findgas-graphql#readme",
+  "dependencies": {
+    "graphql-yoga": "^1.16.7"
+  }
 }
